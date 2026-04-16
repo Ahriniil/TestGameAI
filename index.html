@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добытчик: Миры</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="mainMenu" class="ui-layer">
+        <div class="menu-container">
+            <h1 class="game-logo">ДОБЫТЧИК</h1>
+            <button id="btnStart" class="game-btn">Долбить</button>
+            <button id="btnContinue" class="game-btn secondary">Продолжаем</button>
+            <button id="btnSettingsMenu" class="game-btn secondary">Застройка</button>
+            <button id="btnExit" class="game-btn secondary">Закругляемся</button>
+        </div>
+    </div>
+
+    <div id="hud" class="ui-layer hidden">
+        <div class="hud-controls">
+            <button id="btnGear" class="hub-btn" title="Застройка">⚙️</button>
+            <button id="btnBag" class="hub-btn" title="Мешок">🎒</button>
+            <button id="btnTools" class="hub-btn" title="Кузня">🔨</button>
+        </div>
+    </div>
+
+    <div id="inventoryWindow" class="ui-layer hidden">
+        <div class="modal-window">
+            <div class="modal-header">
+                <span>Мешок</span>
+                <button class="close-btn" id="closeInv">❌</button>
+            </div>
+            <div id="inventoryGrid" class="inventory-grid"></div>
+        </div>
+    </div>
+
+    <div id="craftWindow" class="ui-layer hidden">
+        <div class="modal-window">
+            <div class="modal-header">
+                <span>Кузня</span>
+                <button class="close-btn" id="closeCraft">❌</button>
+            </div>
+            
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <button id="tabTool" class="game-btn active" style="padding: 10px 20px; font-size: 14px;">Инструменты</button>
+                <button id="tabBag" class="game-btn secondary" style="padding: 10px 20px; font-size: 14px;">Улучшения</button>
+            </div>
+            
+            <div class="craft-container">
+                <div class="craft-list" id="craftList"></div>
+                <div class="craft-details" id="craftDetails">
+                    <h3 id="craftTitle" style="margin-top: 0;">Выберите улучшение</h3>
+                    <p id="craftDesc" style="color: #bbb; font-size: 15px; margin-bottom: 10px;"></p>
+                    <ul id="craftRecipe" class="recipe-list"></ul>
+                    <button id="btnUpgrade" class="game-btn hidden" style="margin-top: auto;">Улучшить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="settingsWindow" class="ui-layer hidden">
+        <div class="modal-window mini">
+            <div class="modal-header">
+                <span>Застройка</span>
+                <button class="close-btn" id="closeSettings">❌</button>
+            </div>
+            <div class="settings-content">
+                <div class="setting-item">
+                    <label>Музыка: <span id="musicVolLabel">50%</span></label>
+                    <input type="range" id="musicVolume" min="0" max="100" value="50">
+                </div>
+                <div class="setting-item">
+                    <label>Звуки: <span id="sfxVolLabel">50%</span></label>
+                    <input type="range" id="sfxVolume" min="0" max="100" value="50">
+                </div>
+                <div class="setting-item">
+                    <label>Яркость: <span id="brightLabel">100%</span></label>
+                    <input type="range" id="brightness" min="50" max="150" value="100">
+                </div>
+                <button id="btnSaveGame" class="game-btn" style="margin-top: 20px;">Запомнить</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmWindow" class="ui-layer hidden">
+        <div class="modal-window mini">
+            <h3 style="margin-top: 0;">Выкинуть ресурс?</h3>
+            <p style="color: #bbb; font-size: 15px; margin-bottom: 20px;">Он пропадет навсегда.</p>
+            <div class="confirm-btns">
+                <button id="confirmYes" class="game-btn">Да</button>
+                <button id="confirmNo" class="game-btn secondary">Нет</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
